@@ -1,0 +1,26 @@
+import streamlit as st
+
+# Hardcoded dictionary of recipes and ingredients
+recipes = {
+    "Spaghetti Bolognese": ["spaghetti", "ground beef", "tomato sauce", "onion", "garlic", "olive oil"],
+    "Chicken Stir Fry": ["chicken breast", "soy sauce", "vegetables", "garlic", "ginger"],
+    "Caesar Salad": ["romaine lettuce", "chicken breast", "croutons", "parmesan cheese", "Caesar dressing"]
+}
+
+# Streamlit app
+def main():
+    st.title("Recipe Ingredient Search App")
+
+    # User input for recipe search
+    recipe_name = st.text_input("Enter the name of a recipe:")
+
+    # Display ingredients for the selected recipe
+    if recipe_name in recipes:
+        st.subheader(f"Ingredients for {recipe_name}:")
+        for ingredient in recipes[recipe_name]:
+            st.write(f"- {ingredient}")
+    elif recipe_name:
+        st.warning("Recipe not found. Please enter a valid recipe name.")
+
+if __name__ == "__main__":
+    main()
